@@ -1,5 +1,5 @@
 
---Start of Global Scope--------------------------------------------------------- 
+--Start of Global Scope---------------------------------------------------------
 
 MAKE_VIEW = true
 
@@ -34,7 +34,7 @@ if true == MAKE_VIEW then
   -- Check capabilities
   assert(View,"View not available, check capability of connected device")
   assert(Scan.Transform,"Transform not available, check capability of connected device")
-  
+
   transform = Scan.Transform.create()
   assert(transform, "Transform could not be created")
   viewer = View.create()
@@ -52,7 +52,7 @@ Scan.Provider.File.setDataSetID(provider, 1)
 
 --Start of Function and Event Scope---------------------------------------------
 
--- Called on each received scan
+---Called on each received scan
 function handleNewScan(scan)
   local filteredScan = Scan.MedianFilter.filter(medianFilter, scan)
   local numOfBeams   = Scan.getBeamCount(scan)
@@ -92,7 +92,7 @@ function handleNewScan(scan)
     View.present(viewer)
   end
 end
--- Register callback function to "OnNewScan" event. 
+-- Register callback function to "OnNewScan" event.
 -- This call also starts the playback of scans
 Scan.Provider.File.register(provider,"OnNewScan", handleNewScan)
 
